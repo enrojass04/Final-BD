@@ -33,7 +33,7 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="523.0" prefWidth="897.0" style="-fx-background-color: AED6F1;">
                                  <children>
                                     <ComboBox layoutX="60.0" layoutY="265.0" prefWidth="150.0" promptText="Productos" visible="false" />
-                                    <TableView fx:id="TablaPF" layoutX="58.0" layoutY="287.0" prefHeight="169.0" prefWidth="508.0">
+                                    <TableView fx:id="TablaPF" layoutX="58.0" layoutY="287.0" prefHeight="169.0" prefWidth="419.0">
                                        <columns>
                                           <TableColumn fx:id="colC1" prefWidth="86.0" text="Tipo" />
                                           <TableColumn fx:id="colC2" prefWidth="97.0" text="Código" />
@@ -145,9 +145,9 @@
                                     <TextField layoutX="18.0" layoutY="360.0" promptText="Cantidad" visible="false" />
                                     <TextField fx:id="tfBuscar" layoutX="121.0" layoutY="241.0" prefHeight="25.0" prefWidth="146.0" promptText="Buscar" />
                                     <TextField fx:id="tfCantidad" layoutX="312.0" layoutY="241.0" prefHeight="25.0" prefWidth="65.0" promptText="Cantidad" />
-                                    <TableView fx:id="tablaCantidad" layoutX="586.0" layoutY="288.0" prefHeight="169.0" prefWidth="84.0">
+                                    <TableView fx:id="tablaCantidad" layoutX="465.0" layoutY="287.0" prefHeight="170.0" prefWidth="62.0">
                                       <columns>
-                                          <TableColumn fx:id="colC5" prefWidth="81.5555419921875" text="Cantidad" />
+                                          <TableColumn fx:id="colC5" prefWidth="59.666717529296875" text="Cantidad" />
                                       </columns>
                                     </TableView>
                                     <TextField fx:id="tfCodigo" layoutX="429.0" layoutY="241.0" prefHeight="25.0" prefWidth="113.0" promptText="Código Producto" />
