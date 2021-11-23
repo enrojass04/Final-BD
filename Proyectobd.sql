@@ -176,38 +176,82 @@ end **
 delimiter ;
 
 /*  STORAGE PROCEDURE */
-DELIMITER //
-CREATE PROCEDURE CALCULARIVA()
-BEGIN
-	DECLARE var_final BOOLEAN DEFAULT FALSE;
-	DECLARE IVA FLOAT DEFAULT 0;
-    DECLARE CURSORSTRPRECIO FLOAT DEFAULT 0;
+delimiter //
+create procedure calcularTotal( in numero int, out total double)
+begin
+	declare var_final boolean default false;
+	declare cursornumero int default 0;
+    declare cursorprecio double default 0;
+    declare cursorcantidad int default 0;
+    declare precio double default 0;
+    declare contador int default 0;
     
-	DECLARE CURSOR1 CURSOR FOR
-	SELECT PRECIO FROM PRODUCTO WHERE TIPOPRODUCTO <> 'Alimento' ;
-	
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET var_final = TRUE;
+    declare cursor1 cursor for 
+    select a.numero, b.precio, a.cantidad 
+    from registra a, producto b, factura c
+	where a.codigo = b.codigo
+	and c.numero = a.numero
+    and a.numero = numero;
     
-    OPEN CURSOR1;
-    BUCLE : LOOP
-		FETCH CURSOR1 INTO CURSORSTRPRECIO;
-		IF var_final THEN
-			LEAVE bucle;
-		END IF;
-		        SET IVA = (IVA + CURSORSTRPRECIO*0.19);
+    declare continue handler for not found set var_final=true;
+    
+    open cursor1;
+    bucle : loop
+    
+    fetch cursor1 into cursornumero, cursorprecio, cursorcantidad;
+    if var_final then
+    leave bucle;
+    end if;
+    
+    set precio=cursorcantidad*cursorprecio;
+    set contador=contador+precio;
+    
+    end loop bucle;
+    close cursor1;
+    
+    set total = contador;
+	end //
+    delimiter ;
+    
+
+    
+    delimiter //
+    create procedure calcularIva(in numero int, out ivaTotal int)
+    begin
+		declare var_final boolean default false;
+		declare cursornumero int default 0;
+		declare cursorprecio double default 0;
+		declare cursorcantidad int default 0;
+        declare cursorproducto varchar(30) default '';
+		declare iva double default 0;
         
-    END LOOP BUCLE;
-    CLOSE CURSOR1;
+        declare cursor1 cursor for 
+		select a.numero, b.precio, a.cantidad 
+		from registra a, producto b, factura c
+		where a.codigo = b.codigo
+		and c.numero = a.numero
+        and b.tipoProducto <> 'Alimento'
+		and a.numero = numero;
+        
+	declare continue handler for not found set var_final=true;
     
-    SELECT IVA;
+    open cursor1;
+    bucle : loop
     
-END //
-DELIMITER ;
-
-CALL CALCULARIVA();
-
-select * from registros;
-
+    fetch cursor1 into cursornumero, cursorprecio, cursorcantidad;
+    if var_final then
+    leave bucle;
+    end if;
+    
+    set iva = (iva+(cursorprecio*cursorcantidad)*0.19);
+    
+    
+    end loop bucle;
+    close cursor1;
+    
+    set ivaTotal = iva;
+	end //
+    delimiter ;
 
 /*
 select * from vistaconsumidor;
