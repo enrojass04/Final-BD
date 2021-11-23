@@ -192,6 +192,12 @@ public class Controller implements Initializable{
     @FXML
     private TextField tfCantidad;
     @FXML
+    private TextField tftotal;
+    @FXML
+    private TextField txttotal;
+    @FXML
+    private TextField txtiva;
+    @FXML
     private DatePicker fecha;
     @FXML
     private TextField numero;
@@ -514,7 +520,7 @@ public class Controller implements Initializable{
         String sql = "INSERT INTO vistafactura ("
 				+ "fecha, numero, consumidor, almacen, cajero, tipopago ) VALUES"
 				+ " (?, ?, ?, ?, ?, ?)";
-        System.out.println(sql);
+ 
         try {
             pst = conn.prepareStatement(sql);
             pst.setString(1, fecha.getValue().toString());
@@ -534,10 +540,57 @@ public class Controller implements Initializable{
         limpiar();
 	}
  	
- 	
- 	/**        Factura           */
- 	
- 	
+	public void calcularTotal() {
+		
+		//PRECIO + IVA
+		double total = 0;
+		double iva = 0;
+
+		try {       
+			java.sql.CallableStatement  pcall= null;
+
+			String SQL = "call calcularTotal(?,?)";
+			
+			pcall = conn.prepareCall(SQL);
+
+			pcall.setString(1, numero.getText());
+			pcall.registerOutParameter(2, java.sql.Types.DOUBLE);
+
+			pcall.execute();
+
+			total = pcall.getDouble(2);
+			System.out.println(total);
+			
+			tftotal.setText(total+"");
+			txttotal.setText(total+"");
+
+		} catch (Exception e) {
+			System.err.println("error de registro");
+		}
+		
+		try {       
+			java.sql.CallableStatement  pcall= null;
+
+			String SQL = "call calcularIva(?,?)";
+			pcall = conn.prepareCall(SQL);
+
+			pcall.setString(1, numero.getText());
+			pcall.registerOutParameter(2, java.sql.Types.DOUBLE);
+
+			pcall.execute();
+
+			iva = pcall.getDouble(2);
+			System.out.println(iva);
+			
+			txtiva.setText(iva+"");
+
+		} catch (Exception e) {
+			System.err.println("error de registro");
+		}
+
+	 		
+	 	}
+
  	
  	//Update
  	public void actualizarRegistroConsumidor() {
@@ -631,6 +684,11 @@ public class Controller implements Initializable{
  	
  
  	//Delete
+ 	
+ 	public void eliminarFactura() {
+ 		
+	}
+
  	public void eliminarRegistroConsumidor() {
  		
 	}
@@ -671,7 +729,7 @@ public class Controller implements Initializable{
     	precio.setText(null);
     	//Factura
     	fecha.setValue(null);
-    	numero.setText(null);
+    	//numero.setText(null);
 	}
 	
 	public void guardarlista (){ 
