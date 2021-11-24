@@ -176,5 +176,37 @@ public class Conexion {
 		return pro;
 	}
 	
+	public static Factura buscar_Fac(int numero) {
+		Factura fac = null;
+		Connection conn = ConnectarDb();
+		String sql = "select * from factura " + "where numero= " + numero ;
+		System.err.println(sql);
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			resultado = ps.executeQuery();
+
+			fac = asignarFac();
+
+			System.out.println("Correcto");
+		} catch (Exception e) {
+			System.out.println(" No Correcto");
+		}
+		return fac;
+	}
+	
+	public static Factura asignarFac() {
+		Factura fac = null;
+		try {
+			if (resultado.next()) {
+				fac = new Factura(resultado.getInt("numero"), 
+						new Consumidor(resultado.getString("Consumidor")));
+				
+
+				
+			}
+		} catch (Exception e) {
+		}
+		return fac;
+	}
 
 }

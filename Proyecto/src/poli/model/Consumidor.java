@@ -24,6 +24,17 @@ public class Consumidor {
 		this.direccionUsuario = direccionUsuario;
 		this.numeroUsuario = numeroUsuario;
 	}
+	
+	
+
+	/**
+	 * @param nombreUsuario
+	 */
+	public Consumidor(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+
 
 	public String getNombreUsuario() {
 		return nombreUsuario;

@@ -190,6 +190,10 @@ public class Controller implements Initializable{
     @FXML
     private TextField tfBuscar;
     @FXML
+    private TextField tfbuscarFac;
+    @FXML
+    private TextField numFac;
+    @FXML
     private TextField tfCantidad;
     @FXML
     private TextField tftotal;
@@ -207,6 +211,10 @@ public class Controller implements Initializable{
     private TextField txtivafinal;
     @FXML
     private TextArea tablaFinal;
+    @FXML
+    private TextField tfCliente;
+    @FXML
+    private Label cliente;
     
     @FXML
     private TableView<Producto> TablaPF;
@@ -245,6 +253,7 @@ public class Controller implements Initializable{
  	private ObservableList<Registros> listaRegistros;
  	ObservableList<Producto> listaPF = FXCollections.observableArrayList();
  	ObservableList<Producto> listaPFcantidad = FXCollections.observableArrayList();
+ 	ObservableList<Factura> listaFactura = FXCollections.observableArrayList();
 	//////// Selecccion de datos Consumidor ///////
 	@FXML
 	void getSelected1(MouseEvent event) {
@@ -543,7 +552,15 @@ public class Controller implements Initializable{
         } catch (Exception e) {
         	mensajeError();
         }
-        limpiar();
+        fecha.setValue(null);
+    	numero.setText(null);
+        TablaPF.getItems().clear();
+    	tablaCantidad.getItems().clear();
+    	cmbAlmacenes.getItems().clear();
+    	cmbCajero.getItems().clear();
+    	cmbConsumidores.getItems().clear();
+    	cmbPagos.getItems().clear();
+        
 	}
  	
 	public void calcularTotal() {
@@ -712,6 +729,26 @@ public class Controller implements Initializable{
  	
  	public void eliminarFactura() {
  		
+        try {
+        	conn = Conexion.ConnectarDb();
+     		String sql = "DELETE FROM factura WHERE numero= ?";
+     		
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, numFac.getText());
+            
+            pst.execute();
+            
+            mensajeDelete();		
+			System.out.println(sql);
+            
+        } catch (Exception e) {
+        	mensajeError();
+        }
+        limpiar();
+        numFac.setText(null);
+        tfCliente.setText(null);
+ 		
+ 		
 	}
 
  	public void eliminarRegistroConsumidor() {
@@ -754,7 +791,13 @@ public class Controller implements Initializable{
     	precio.setText(null);
     	//Factura
     	fecha.setValue(null);
-    	//numero.setText(null);
+    	numero.setText(null);
+    	TablaPF.getItems().clear();
+    	tablaCantidad.getItems().clear();
+    	cmbAlmacenes.getItems().clear();
+    	cmbCajero.getItems().clear();
+    	cmbConsumidores.getItems().clear();
+    	cmbPagos.getItems().clear();
 	}
 	
 	public void guardarlista (){ 
@@ -798,14 +841,43 @@ public class Controller implements Initializable{
 			}
 		
 			guardarlista ();
+			tfBuscar.setText(null);
+	    	tfCantidad.setText(null);
+		}
 		
-
+		@FXML
+		void buscarFac(ActionEvent event) {
+			
+	
+			int numero = Integer.parseInt(tfbuscarFac.getText());
+			Factura fac = Conexion.buscar_Fac(numero);
+			if (fac == null) {
+				Alert mensaje = new Alert(AlertType.INFORMATION);
+				mensaje.setTitle("Resultado");
+				mensaje.setHeaderText("No existe ese número de factura");
+				mensaje.show();	
+			} else {
+				listaFactura.add(fac);
+				mostrarFac(fac);
+				for (Iterator iterator = listaFactura.iterator(); iterator.hasNext();) {
+					Factura factura = (Factura) iterator.next();
+					System.out.println(factura);
+					
+				}
+			}
+			
+		}
+		
+		public void mostrarFac(Factura fac){
+			numFac.setText(fac.getNumero()+"");
+			tfCliente.setText(fac.getConsumidor().toString());
+				        
 		}
 		
 		public void mostrar(Producto pro){
 			tfCodigo.setText(pro.getCodigo());	        
 		}
-	 @FXML
+		@FXML
 		    void imprimirFactura(ActionEvent event) {
 
 		 
@@ -830,6 +902,8 @@ public class Controller implements Initializable{
 		cmbAlmacenes.setItems(listaAlmacen);
 		cmbPagos.setItems(listaPago);
 		cmbCajero.setItems(listaCajero);
+		
+		
 		
 	}
 	

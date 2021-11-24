@@ -34,6 +34,24 @@ public class Factura {
 		this.pago = pago;
 		this.productos = productos;
 	}
+	
+	
+
+	/**
+	 * @param numero
+	 * @param consumidor
+	 */
+	public Factura(int numero, Consumidor consumidor) {
+		this.numero = numero;
+		this.consumidor = consumidor;
+	}
+
+	/**
+	 * @param numero
+	 */
+	public Factura(int numero) {
+		this.numero = numero;
+	}
 
 	public int getNumero() {
 		return numero;
@@ -90,6 +108,7 @@ public class Factura {
 	public void setProductos(ObservableList<Producto> productos) {
 		this.productos = productos;
 	}
+	
 
 
 	
