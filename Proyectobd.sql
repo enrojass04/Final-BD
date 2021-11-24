@@ -20,7 +20,9 @@ CREATE TABLE almacen
 );
 
 insert into almacen values
-('1000-1','Olimpica','Suba','Ave Suba # 86-02','Pablo Perez','3126457');
+('1000-1','Olimpica','Suba','Ave Suba # 86-02','Pablo Perez','3126457'),
+('1000-2','Olimpica','Chapinero','Cra 7 # 63-04','Jorge Mendez','332829'),
+('1000-3','Olimpica','Hayuelos','Ave Cali #22-01','Ricardo Garces','30028382');
 
 DROP TABLE IF EXISTS `factura`;
 CREATE TABLE factura
@@ -59,7 +61,7 @@ insert into producto values
 ('Alimento','a004','Banano',2000,null),
 ('Alimento','a005','Huevos',450,null),
 ('Alimento','a006','Queso',4300,null),
-('Alimento','a007','Carne',11000,null),
+('Alimento','a007','Pan',400,null),
 ('Alimento','a008','Pollo',7500,null),
 ('Alimento','a009','Pescado',8000,null),
 ('Alimento','a010','Lenteja',2500,null),
@@ -93,7 +95,10 @@ CREATE TABLE Pago
   FOREIGN KEY (numero) REFERENCES Factura(numero)
 );
 
-insert into pago values ('A01','Efectivo', null);
+insert into pago values 
+('A01','Efectivo', null),
+('A02','Tarjeta', null),
+('A03','Cheque', null);
 
 DROP TABLE IF EXISTS `consumidor`;
 CREATE TABLE consumidor
@@ -110,7 +115,9 @@ CREATE TABLE consumidor
 );
 
 insert into consumidor values
-('Jose','A001','100',1001,'Suba','3126457',null);
+('Josefina Arias','A001','100',1001,'Suba','3126457',null),
+('Eduwin Rojas','A002','220',1002,'Fontibon','32416281',null),
+('Zaira Rey','A003','150',1003,'Medelena','3002837',null);
 
 DROP TABLE IF EXISTS `cajero`;
 CREATE TABLE cajero
@@ -121,8 +128,10 @@ CREATE TABLE cajero
 );
 
 insert into cajero values
-('101','Juan'),
-('102','Paula');
+('104','Laura Uribe'),
+('107','Pablo Peña'),
+('109','Fernando Forigua');
+
 
 /*Vistas */
 create view vistaconsumidor as
@@ -148,10 +157,6 @@ create view vistaregistra as
   select r.cantidad, r.numero, r.codigo
   from 
   registra r;
-  
- 
-
-
 
 /*Trigger*/
 
@@ -253,6 +258,8 @@ begin
 	end //
     delimiter ;
 
+select* from factura;
+
 /*
 select * from vistaconsumidor;
 select * from vistapago;
@@ -269,5 +276,4 @@ select * from pago;
 select * from registros;
 
 drop table registros;
-drop view view1;
-
+drop view view1;*/
