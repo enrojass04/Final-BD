@@ -74,10 +74,20 @@ public class Almacen {
 		this.telefonoAlmacen = telefonoAlmacen;
 	}
 
-	@Override
+	
+	public String mostrarFac() {
+		return "\n" +nombreAlmacen + "  " + sucursal + "\n" 
+				+ direccionAlmacen + "\n"
+				+ "Nit: " + nit + "\n" 
+				+ "Contacto: " + telefonoAlmacen +"\n"
+				+"Gerente: " + nombreGerente;
+	}
+
+	
 	public String toString() {
 		return nombreAlmacen + " " + sucursal;
 	}
+	
 	
 	
 	

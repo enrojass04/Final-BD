@@ -1,5 +1,6 @@
 package poli.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -21,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import poli.model.Almacen;
@@ -49,19 +53,39 @@ public class AgregarPFController implements Initializable {
 	private TableColumn<?, ?> colC5;
 	@FXML
 	private Button salir;
+	@FXML
+	private TextField txtBusqueda;
 	
 	Producto producto;
 	
 	private ObservableList<Producto> listaProducto;
 	
-	private ObservableList<Producto> listaProductoF;
+	private ObservableList<Producto> listaProductoFil;
 	
 
 		@FXML
 		void agregarProductos(ActionEvent event) {
 		    	
+			FXMLLoader loader = new FXMLLoader (getClass().getResource("/vista/ProductosEnFactura.fxml")) ;
+			try {
+				Parent root = loader.load();
+				
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		    	
 		
+		    }
+		
+		@FXML
+		void filtrarProducto(KeyEvent event) {
+		
+			
+			
+				
+
 		    }
 	
 	    @FXML
@@ -85,6 +109,8 @@ public class AgregarPFController implements Initializable {
 		@Override
 		public void initialize(URL url, ResourceBundle rb) {
 			
+			listaProducto = FXCollections.observableArrayList();
+			listaProductoFil = FXCollections.observableArrayList();
 			//listaProductoF = FXCollections.observableArrayList();
 			actualizarTablaProducto();
 			

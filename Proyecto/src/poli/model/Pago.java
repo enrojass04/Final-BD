@@ -30,6 +30,13 @@ public class Pago {
 		this.tipoPago = tipoPago;
 	}
 
+	
+	public String mostrarFac() {
+		return "\n" + tipoPago  +"\n"
+				+"Código: " + idPago;
+	}
+
+	
 	@Override
 	public String toString() {
 		return tipoPago;

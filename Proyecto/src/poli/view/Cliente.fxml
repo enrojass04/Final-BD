@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -14,13 +13,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="606.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poli.controller.Controller">
+<AnchorPane prefHeight="606.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poli.controller.Controller">
    <children>
       <TabPane layoutY="6.0" prefHeight="600.0" prefWidth="900.00" style="-fx-background-color: fcecdd;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -28,22 +29,45 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="517.0" prefWidth="743.0" style="-fx-background-color: AED6F1;">
                      <children>
-                        <SplitPane dividerPositions="0.005868544600938969" orientation="VERTICAL" prefHeight="570.6666666666666" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <SplitPane dividerPositions="0.005272407732864675" orientation="VERTICAL" prefHeight="570.6666666666666" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="105.0" prefWidth="897.0" style="-fx-background-color: AED6F1;">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="898.0" style="-fx-background-color: AED6F1;">
                                  <children>
-                                    <TextArea layoutX="19.0" layoutY="171.0" prefHeight="343.0" prefWidth="707.0" />
-                                    <TextField fx:id="txttotal" layoutX="19.0" layoutY="43.0" prefHeight="79.0" prefWidth="321.0" promptText="total" style="-fx-background-color: #203CC3; -fx-text-fill: ffffff;">
+                                    <TextArea fx:id="tablaFinal" layoutX="96.0" layoutY="138.0" prefHeight="365.0" prefWidth="707.0" style="-fx-background-color: BatangChe;">
                                        <font>
-                                          <Font name="Arial Rounded MT Bold" size="39.0" />
+                                          <Font name="Century Schoolbook" size="14.0" />
+                                       </font></TextArea>
+                                    <TextField fx:id="txttotal" layoutX="196.0" layoutY="62.0" prefHeight="37.0" prefWidth="233.0" style="-fx-background-color: #7FB3D5;">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="20.0" />
                                        </font>
                                     </TextField>
+                                    <TextField fx:id="txtivafinal" layoutX="503.0" layoutY="63.0" prefHeight="37.0" prefWidth="163.0" style="-fx-background-color: #7FB3D5;">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="20.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="96.0" layoutY="62.0" prefHeight="36.0" prefWidth="80.0" text="TOTAL">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="449.0" layoutY="63.0" prefHeight="36.0" prefWidth="54.0" text="IVA">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="113.0" fitWidth="140.0" layoutX="690.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../../Downloads/pngwing.com%20(4).png" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="523.0" prefWidth="897.0" style="-fx-background-color: AED6F1;">
                                  <children>
                                     <ComboBox layoutX="60.0" layoutY="265.0" prefWidth="150.0" promptText="Productos" visible="false" />
-                                    <TableView fx:id="TablaPF" layoutX="58.0" layoutY="246.0" prefHeight="210.0" prefWidth="419.0">
+                                    <TableView fx:id="TablaPF" layoutX="58.0" layoutY="246.0" prefHeight="210.0" prefWidth="407.0">
                                        <columns>
                                           <TableColumn fx:id="colC1" prefWidth="86.0" text="Tipo" />
                                           <TableColumn fx:id="colC2" prefWidth="97.0" text="Código" />
@@ -52,13 +76,14 @@
                                           <TableColumn fx:id="colC45" prefWidth="106.22219848632812" text="Cantidad" />
                                        </columns>
                                     </TableView>
-                                    <TextField fx:id="txtiva" layoutX="635.0" layoutY="108.0" prefHeight="25.0" prefWidth="150.0" promptText="IVA" />
-                                    <TextField fx:id="tftotal" layoutX="635.0" layoutY="42.0" prefHeight="50.0" prefWidth="150.0" promptText="TOTAL">
+                                    <TextField fx:id="txtiva" layoutX="635.0" layoutY="84.0" prefHeight="25.0" prefWidth="150.0" promptText="IVA" />
+                                    <TextField fx:id="tftotal" layoutX="635.0" layoutY="14.0" prefHeight="50.0" prefWidth="150.0" promptText="TOTAL">
                                        <font>
                                           <Font name="Book Antiqua" size="18.0" />
-                                       </font></TextField>
-                                    <TextField layoutX="635.0" layoutY="173.0" prefHeight="25.0" prefWidth="150.0" promptText="Buscar " />
-                                    <GridPane layoutX="28.0" layoutY="6.0" prefHeight="155.0" prefWidth="373.0">
+                                       </font>
+                                    </TextField>
+                                    <TextField layoutX="635.0" layoutY="129.0" prefHeight="25.0" prefWidth="150.0" promptText="Buscar " />
+                                    <GridPane layoutX="192.0" layoutY="6.0" prefHeight="155.0" prefWidth="350.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -99,9 +124,9 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </DatePicker>
-                                          <TextField fx:id="numero" prefHeight="25.0" prefWidth="165.0" promptText="Num Factura" GridPane.rowIndex="1">
+                                          <TextField fx:id="numero" prefHeight="25.0" prefWidth="132.0" promptText="Num Factura" GridPane.rowIndex="1">
                                              <GridPane.margin>
-                                                <Insets left="5.0" right="25.0" />
+                                                <Insets left="5.0" right="32.0" />
                                              </GridPane.margin>
                                           </TextField>
                                           <ComboBox fx:id="cmbCajero" prefHeight="25.0" prefWidth="150.0" promptText="Cajero" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -111,60 +136,74 @@
                                           </ComboBox>
                                        </children>
                                     </GridPane>
-                                    <Label layoutX="167.0" layoutY="175.0" text="LISTA DE PRODUCTOS" textFill="#161616">
+                                    <Label layoutX="225.0" layoutY="175.0" text="LISTA DE PRODUCTOS" textFill="#161616">
                                        <font>
                                           <Font name="Stencil" size="18.0" />
                                        </font>
                                     </Label>
-                                    <GridPane layoutX="648.0" layoutY="308.0" prefHeight="201.0" prefWidth="207.0">
+                                    <GridPane layoutX="570.0" layoutY="243.0" prefHeight="217.0" prefWidth="281.0">
                                       <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
                                       <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#generarFactura" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #58D68D;" text="Generar">
+                                          <Button mnemonicParsing="false" onAction="#generarFactura" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #58D68D;" text="Generar" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets left="15.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#eliminarFactura" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #E74C3C;" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <Button mnemonicParsing="false" onAction="#eliminarFactura" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #E74C3C;" text="Eliminar" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="15.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#calcularTotal" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #FDFEFE;" text="Total" GridPane.rowIndex="1">
+                                          <Button mnemonicParsing="false" onAction="#calcularTotal" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: B983FF;" text="Total" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets left="15.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #F7DC6F;" text="Actualizar" GridPane.rowIndex="3">
+                                          <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #F7DC6F;" text="Actualizar" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets left="15.0" />
+                                             </GridPane.margin>
+                                          </Button>
+                                          <Button fx:id="imprimir" alignment="CENTER" mnemonicParsing="false" onAction="#imprimirFactura" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: ffffff;" text="Imprimir" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <padding>
+                                                <Insets left="10.0" right="10.0" />
+                                             </padding>
                                              <GridPane.margin>
                                                 <Insets left="15.0" />
                                              </GridPane.margin>
                                           </Button>
                                        </children>
                                     </GridPane>
-                                    <Button fx:id="agregar" layoutX="267.0" layoutY="471.0" mnemonicParsing="false" onAction="#buscar" prefHeight="35.0" prefWidth="89.0" style="-fx-background-color: #58D68D; -fx-border-color: #000000;" text="BUSCAR">
+                                    <Button fx:id="agregar" layoutX="267.0" layoutY="471.0" mnemonicParsing="false" onAction="#buscar" prefHeight="35.0" prefWidth="89.0" style="-fx-background-color: #58D68D;" text="Buscar">
                                        <font>
-                                          <Font name="Bauhaus 93" size="15.0" />
+                                          <Font size="15.0" />
                                        </font>
                                     </Button>
                                     <TextField layoutX="18.0" layoutY="360.0" promptText="Cantidad" visible="false" />
-                                    <TextField fx:id="tfBuscar" layoutX="121.0" layoutY="209.0" prefHeight="25.0" prefWidth="146.0" promptText="Buscar" />
-                                    <TextField fx:id="tfCantidad" layoutX="316.0" layoutY="209.0" prefHeight="25.0" prefWidth="65.0" promptText="Cantidad" />
-                                    <TableView fx:id="tablaCantidad" layoutX="465.0" layoutY="246.0" prefHeight="211.0" prefWidth="62.0">
+                                    <TextField fx:id="tfBuscar" layoutX="194.0" layoutY="209.0" prefHeight="25.0" prefWidth="146.0" promptText="Buscar" />
+                                    <TextField fx:id="tfCantidad" layoutX="362.0" layoutY="209.0" prefHeight="25.0" prefWidth="65.0" promptText="Cantidad" />
+                                    <TableView fx:id="tablaCantidad" layoutX="465.0" layoutY="246.0" prefHeight="211.0" prefWidth="76.0">
                                       <columns>
-                                          <TableColumn fx:id="colC5" prefWidth="59.666717529296875" text="Cantidad" />
+                                          <TableColumn fx:id="colC5" prefWidth="75.0" text="Cantidad" />
                                       </columns>
                                     </TableView>
                                     <TextField fx:id="tfCodigo" layoutX="420.0" layoutY="209.0" opacity="0.0" prefHeight="25.0" prefWidth="113.0" promptText="Código Producto" />
-                                    <ButtonBar layoutX="455.0" layoutY="469.0" prefHeight="40.0" prefWidth="200.0" />
+                                    <ImageView fitHeight="146.0" fitWidth="141.0" layoutX="22.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../../Downloads/pngwing.com%20(3).png" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                               </AnchorPane>
                           </items>
@@ -177,11 +216,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="569.0" prefWidth="836.0" style="-fx-background-color: AED6F1;">
                      <children>
-                        <GridPane layoutX="76.0" layoutY="14.0" prefHeight="101.0" prefWidth="561.0">
+                        <GridPane layoutX="224.0" layoutY="14.0" prefHeight="101.0" prefWidth="500.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="214.33331298828125" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="192.33335367838538" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="25.0" prefWidth="60.333353678385436" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="169.3333740234375" />
                           </columnConstraints>
                           <rowConstraints>
@@ -214,17 +252,17 @@
                                  <GridPane.margin>
                                     <Insets left="3.0" />
                                  </GridPane.margin></TextField>
-                              <Button fx:id="guardarConsumidor" mnemonicParsing="false" onAction="#agregarConsumidor" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #58D68D;" text="Guardar" GridPane.columnIndex="3">
+                              <Button fx:id="guardarConsumidor" mnemonicParsing="false" onAction="#agregarConsumidor" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #58D68D;" text="Guardar" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="25.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button fx:id="actualizarConsumidor" mnemonicParsing="false" onAction="#actualizarRegistroConsumidor" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #F7DC6F;" text="Actualizar" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                              <Button fx:id="actualizarConsumidor" mnemonicParsing="false" onAction="#actualizarRegistroConsumidor" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #F7DC6F;" text="Actualizar" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="25.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#limpiar" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #FDFEFE;" text="Limpiar" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                              <Button mnemonicParsing="false" onAction="#limpiar" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #FDFEFE;" text="Limpiar" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="25.0" />
                                  </GridPane.margin>
@@ -242,7 +280,7 @@
                           </columns>
                         </TableView>
                         <Button disable="true" layoutX="496.0" layoutY="497.0" mnemonicParsing="false" onAction="#eliminarRegistroConsumidor" opacity="0.0" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #EC7063;" text="Eliminar" />
-                        <GridPane layoutX="22.0" layoutY="374.0" prefHeight="136.0" prefWidth="309.0">
+                        <GridPane layoutX="181.0" layoutY="382.0" prefHeight="136.0" prefWidth="271.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.6667022705078" minWidth="10.0" prefWidth="200.33331298828125" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.33331298828125" minWidth="10.0" prefWidth="109.66668701171875" />
@@ -280,13 +318,23 @@
                               </TextField>
                            </children>
                         </GridPane>
-                        <TableView fx:id="tablaCajero" layoutX="375.0" layoutY="382.0" onMouseClicked="#getSelected2" prefHeight="161.0" prefWidth="341.0">
+                        <TableView fx:id="tablaCajero" layoutX="464.0" layoutY="382.0" onMouseClicked="#getSelected2" prefHeight="161.0" prefWidth="341.0">
                           <columns>
                             <TableColumn fx:id="colCajero1" prefWidth="141.33331298828125" text="Código Cajero" />
                             <TableColumn fx:id="colCajero2" prefWidth="202.00003051757812" text="Nombre Cajero" />
                           </columns>
                         </TableView>
                         <Separator layoutX="14.0" layoutY="348.0" prefHeight="7.0" prefWidth="858.0" style="-fx-background-color: #000000;" />
+                        <ImageView fitHeight="98.0" fitWidth="176.0" layoutX="44.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../Downloads/pngwing.com.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="106.0" fitWidth="181.0" layoutX="69.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../Downloads/pngwing.com%20(1).png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
             </content>
@@ -343,10 +391,10 @@
                               <TextField fx:id="idPago" prefHeight="27.0" prefWidth="192.0" promptText="Id Pago" />
                            </children>
                         </GridPane>
-                        <TableView fx:id="tablaPago" layoutX="210.0" layoutY="328.0" onMouseClicked="#getSelected4" prefHeight="160.0" prefWidth="285.0">
+                        <TableView fx:id="tablaPago" layoutX="210.0" layoutY="328.0" onMouseClicked="#getSelected4" prefHeight="160.0" prefWidth="330.0">
                            <columns>
-                              <TableColumn fx:id="colIdPago" prefWidth="127.33332824707031" text="Id Pago" />
-                              <TableColumn fx:id="colTipoPago" prefWidth="157.3333740234375" text="Nombre" />
+                              <TableColumn fx:id="colIdPago" prefWidth="165.0" text="Id Pago" />
+                              <TableColumn fx:id="colTipoPago" prefWidth="164.0" text="Nombre" />
                            </columns>
                         </TableView>
                         <Separator layoutY="296.0" prefHeight="24.0" prefWidth="872.0" />
@@ -354,6 +402,11 @@
                         <Button layoutX="39.0" layoutY="463.0" mnemonicParsing="false" onAction="#actualizarRegistroPago" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #F7DC6F;" text="Actualizar" />
                         <Button disable="true" layoutX="124.0" layoutY="497.0" mnemonicParsing="false" onAction="#eliminarRegistroPago" opacity="0.0" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #EC7063;" text="Eliminar" />
                         <Button layoutX="39.0" layoutY="497.0" mnemonicParsing="false" onAction="#limpiar" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #FDFEFE;" text="Limpiar" />
+                        <ImageView fitHeight="129.0" fitWidth="134.0" layoutX="586.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../Downloads/pngwing.com%20(2).png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </content>
@@ -387,7 +440,7 @@
                               <TableColumn fx:id="colPrecio" prefWidth="187.33333333333337" text="Precio" />
                            </columns>
                         </TableView>
-                        <GridPane layoutX="37.0" layoutY="218.0" prefHeight="249.0" prefWidth="123.0">
+                        <GridPane layoutX="37.0" layoutY="218.0" prefHeight="137.0" prefWidth="123.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
@@ -395,15 +448,18 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Button mnemonicParsing="false" onAction="#guardarRegistroProducto" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #58D68D;" text="Guardar" />
                               <Button mnemonicParsing="false" onAction="#actualizarRegistroProducto" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #F7DC6F;" text="Actualizar" GridPane.rowIndex="1" />
                               <Button mnemonicParsing="false" onAction="#limpiar" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #FDFEFE;" text="Limpiar" GridPane.rowIndex="2" />
-                              <Button disable="true" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #EC7063;" text="Eliminar" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
+                        <ImageView fitHeight="120.0" fitWidth="144.0" layoutX="33.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../Downloads/pngwing.com%20(3).png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </content>
@@ -412,14 +468,14 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="517.0" prefWidth="743.0" style="-fx-background-color: AED6F1;">
                      <children>
-                        <TableView fx:id="tablaRegistros" layoutX="12.0" layoutY="88.0" prefHeight="151.0" prefWidth="302.0">
+                        <TableView fx:id="tablaRegistros" layoutX="12.0" layoutY="88.0" prefHeight="151.0" prefWidth="327.0">
                            <columns>
                               <TableColumn fx:id="colregistros1" prefWidth="109.9999942779541" text="Nombre Cliente" />
                               <TableColumn fx:id="colregistros2" minWidth="0.0" prefWidth="85.33333587646484" text="Id Cliente" />
-                              <TableColumn fx:id="colregistros3" prefWidth="103.33335876464844" text="Fecha Registro" />
+                              <TableColumn fx:id="colregistros3" prefWidth="130.0" text="Fecha Registro" />
                            </columns>
                         </TableView>
-                        <Label layoutX="41.0" layoutY="34.0" prefHeight="36.0" prefWidth="243.0" style="-fx-background-color: FFFFFF;" text=" REGISTROS DE INSERCIÓN DE CLIENTES" textAlignment="CENTER">
+                        <Label layoutX="41.0" layoutY="34.0" prefHeight="36.0" prefWidth="283.0" style="-fx-background-color: FFFFFF;" text=" REGISTROS DE INSERCIÓN DE CLIENTES" textAlignment="CENTER">
                            <font>
                               <Font name="Sitka Text" size="12.0" />
                            </font></Label>

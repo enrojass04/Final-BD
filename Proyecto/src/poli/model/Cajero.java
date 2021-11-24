@@ -2,19 +2,19 @@ package poli.model;
 
 public class Cajero {
 
-	private String codigoCajero;
+	private String idCajero;
 	private String nombreCajero;
 	
 	
-	public Cajero(String codigoCajero, String nombreCajero) {
-		this.codigoCajero = codigoCajero;
+	public Cajero(String idCajero, String nombreCajero) {
+		this.idCajero = idCajero;
 		this.nombreCajero = nombreCajero;
 	}
 	public String getIdCajero() {
-		return codigoCajero;
+		return idCajero;
 	}
 	public void setIdCajero(String idCajero) {
-		this.codigoCajero = idCajero;
+		this.idCajero = idCajero;
 	}
 	public String getNombreCajero() {
 		return nombreCajero;
@@ -22,6 +22,13 @@ public class Cajero {
 	public void setNombreCajero(String nombreCajero) {
 		this.nombreCajero = nombreCajero;
 	}
+	
+	public String mostrarFac() {
+		return "\n" + "Cajero: "+ nombreCajero + "\n"
+				+"Código: " + idCajero ;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return nombreCajero;

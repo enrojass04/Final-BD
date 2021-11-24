@@ -74,6 +74,16 @@ public class Consumidor {
 	}
 
 
+	public String mostrarFac() {
+		return "\n" + "Cliente: " + nombreUsuario +"\n"
+				+"Identificación: " + idUsuario +"\n"
+				+"No. Tarjeta: " + numeroTarjetaUsuario  + "\n"
+				+"Dirección: " + direccionUsuario +"\n"
+				+"Contacto: " + numeroUsuario +"\n"
+				+"Usted tiene: " + puntosUsuario + " puntos ";
+	}
+
+
 	@Override
 	public String toString() {
 		return nombreUsuario;

@@ -88,6 +88,13 @@ public class Producto {
 		this.precio = precio;
 	}
 	
+	public String mostrarFac() {
+		return "\n" + tipoProducto + "\n"
+				+"codigo: " + codigo + " |"+ " \t"
+				+ "Producto: " + nombreProducto + " |"+ " \t"
+				+ "Precio: " + "$"+ precio + " |"+ " \t"
+				;
+	}
 
 	@Override
 	public String toString() {

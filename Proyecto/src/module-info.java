@@ -1,4 +1,4 @@
-module Proyecto {
+module ProyectoBD {
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires javafx.base;

@@ -91,10 +91,28 @@ public class Factura {
 		this.productos = productos;
 	}
 
-	@Override
-	public String toString() {
-		return "Factura " + numero + " " + fecha + " " + consumidor + " " + cajero
-				+ " " + almacen + " " + pago + " " + productos;
+
+	
+	public String mostrarFac() {
+		String s = "";
+		for (int i = 0; i < productos.size(); i++) {
+			s += productos.get(i).mostrarFac() + " ";
+		}
+		return "No. Factura: " + numero + "\n"
+	          +"Fecha: " + fecha +"\n"
+	          + "\n"
+	          + "Almacen:  " +  almacen.mostrarFac() +"\n"
+			  + "\n"
+	          + "Información cliente: " + consumidor.mostrarFac() +"\n"
+	    	  + "\n"
+	          + "Información cajero: " + cajero.mostrarFac() +"\n"
+	    	  + "\n"
+	          + "Productos: " + s +"\n"
+	    	  + "\n"
+			  + "Tipo de pago: " + pago.mostrarFac() +"\n"
+					  +"\n"
+					  +"\n"
+			  + "-------------------------------¡GRACIAS POR SU COMPRA!-----------------------------------";
 	}
 
 	

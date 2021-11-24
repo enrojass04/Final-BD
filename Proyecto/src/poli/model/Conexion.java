@@ -25,7 +25,7 @@ public class Conexion {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/facturabd", "root",
-					"Clothe41$");
+					"Jos123efina*");
 			System.out.println("Conexion establecida");
 			return conn;
 		} catch (Exception e) {
@@ -176,21 +176,5 @@ public class Conexion {
 		return pro;
 	}
 	
-	///////////////////FACTURA
-	/**public static ObservableList<Factura> getDataFactura	() {
-		Connection conn = ConnectarDb();
-		ObservableList<Factura> list = FXCollections.observableArrayList();
-		try {
-			PreparedStatement ps = conn.prepareStatement("select * from vistafactura");
-			ResultSet rs = ps.executeQuery();
 
-			while (rs.next()) {
-				list.add(new Factura(rs.getInt("numero"), rs.getString("fecha")));
-			}
-		} catch (Exception e) {
-			
-		}
-		return list;
-	}
-	*/
 }

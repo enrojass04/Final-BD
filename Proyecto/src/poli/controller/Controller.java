@@ -203,6 +203,10 @@ public class Controller implements Initializable{
     private TextField numero;
     @FXML
     private TextField tfCodigo;
+    @FXML
+    private TextField txtivafinal;
+    @FXML
+    private TextArea tablaFinal;
     
     @FXML
     private TableView<Producto> TablaPF;
@@ -516,6 +520,8 @@ public class Controller implements Initializable{
  				cmbConsumidores.getValue(), cmbCajero.getValue(), cmbAlmacenes.getValue(),
  				cmbPagos.getValue(), listaPF);
  		
+ 		
+ 		
 		conn = Conexion.ConnectarDb();
         String sql = "INSERT INTO vistafactura ("
 				+ "fecha, numero, consumidor, almacen, cajero, tipopago ) VALUES"
@@ -561,8 +567,8 @@ public class Controller implements Initializable{
 			total = pcall.getDouble(2);
 			System.out.println(total);
 			
-			tftotal.setText(total+"");
-			txttotal.setText(total+"");
+			tftotal.setText("       $"+total+"");
+			txttotal.setText("          $"+total+"");
 
 		} catch (Exception e) {
 			System.err.println("error de registro");
@@ -582,7 +588,8 @@ public class Controller implements Initializable{
 			iva = pcall.getDouble(2);
 			System.out.println(iva);
 			
-			txtiva.setText(iva+"");
+			txtiva.setText("              $"+iva+"");
+			txtivafinal.setText("      $"+iva+"");
 
 		} catch (Exception e) {
 			System.err.println("error de registro");
@@ -618,6 +625,24 @@ public class Controller implements Initializable{
     }
  	
  	public void actualizarRegistroCajero() {
+ 		
+ 		try {
+            conn = Conexion.ConnectarDb();
+            		String value1 = idCajero.getText();
+            		String value2 = nombreCajero.getText();
+            		
+            String sql = "update Cajero set nombreCajero= '"+value2+"' where "+" codigoCajero= '"+value1+"'";
+            System.out.println(sql);
+            pst= conn.prepareStatement(sql);
+            pst.execute();
+            mensajeUpdate();	
+			actualizarTablaCajero();
+			
+            
+        } catch (Exception e) {
+        	mensajeError(); 
+        }
+		limpiar();
  		
  	}
  	
@@ -774,18 +799,20 @@ public class Controller implements Initializable{
 		
 			guardarlista ();
 		
-			
-	     	/**
-			tfBuscar.setText(null);
-			tfCantidad.setText(null);
-			tfCodigo.setText(null);*/
 
 		}
 		
 		public void mostrar(Producto pro){
 			tfCodigo.setText(pro.getCodigo());	        
-	    }
-		
+		}
+	 @FXML
+		    void imprimirFactura(ActionEvent event) {
+
+		 
+		 tablaFinal.setText(f.mostrarFac());
+		 System.out.println(f);
+		 
+		    }
 
 
 	@Override
