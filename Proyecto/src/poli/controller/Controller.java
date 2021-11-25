@@ -552,14 +552,7 @@ public class Controller implements Initializable{
         } catch (Exception e) {
         	mensajeError();
         }
-        fecha.setValue(null);
-    	numero.setText(null);
-        TablaPF.getItems().clear();
-    	tablaCantidad.getItems().clear();
-    	cmbAlmacenes.getItems().clear();
-    	cmbCajero.getItems().clear();
-    	cmbConsumidores.getItems().clear();
-    	cmbPagos.getItems().clear();
+
         
 	}
  	
@@ -790,14 +783,22 @@ public class Controller implements Initializable{
     	nombreProducto.setText(null);
     	precio.setText(null);
     	//Factura
+    	
+    	
+    	tftotal.setText(null);
+    	txtiva.setText(null);
     	fecha.setValue(null);
     	numero.setText(null);
-    	TablaPF.getItems().clear();
-    	tablaCantidad.getItems().clear();
+    	
     	cmbAlmacenes.getItems().clear();
     	cmbCajero.getItems().clear();
     	cmbConsumidores.getItems().clear();
     	cmbPagos.getItems().clear();
+    	
+    	initialize(null, null);
+    	
+    	TablaPF.getItems().clear();
+    	tablaCantidad.getItems().clear();
 	}
 	
 	public void guardarlista (){ 
@@ -826,19 +827,20 @@ public class Controller implements Initializable{
 			String nombreProducto = tfBuscar.getText();
 			int cantidad = Integer.parseInt(tfCantidad.getText());
 			Producto pro = Conexion.buscar_reg(nombreProducto);
-			if (pro == null) {
+			Producto proc = new Producto(cantidad);
+			if (pro == null && proc == null ) {
+				Alert mensaje = new Alert(AlertType.INFORMATION);
+				mensaje.setTitle("Resultado");
+				mensaje.setHeaderText("Producto no listado");
+				mensaje.show();	
 
-			} else {
+			} else if (pro != null && proc != null){
 				listaPF.add(pro);
 				mostrar(pro);
-			}
-			Producto proc = new Producto(cantidad);
-			if (proc == null) {
-
-			} else {				
 				listaPFcantidad.add(proc);
-				tablaCantidad.setItems(listaPFcantidad);				
+				tablaCantidad.setItems(listaPFcantidad);
 			}
+
 		
 			guardarlista ();
 			tfBuscar.setText(null);
