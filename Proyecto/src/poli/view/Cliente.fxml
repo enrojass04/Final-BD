@@ -214,7 +214,7 @@
                                     <TextField layoutX="18.0" layoutY="360.0" promptText="Cantidad" visible="false" />
                                     <TextField fx:id="tfBuscar" layoutX="190.0" layoutY="231.0" prefHeight="25.0" prefWidth="146.0" promptText="Buscar" />
                                     <TextField fx:id="tfCantidad" layoutX="367.0" layoutY="231.0" prefHeight="25.0" prefWidth="65.0" promptText="Cantidad" />
-                                    <TableView fx:id="tablaCantidad" layoutX="466.0" layoutY="267.0" prefHeight="211.0" prefWidth="76.0">
+                                    <TableView fx:id="tablaCantidad" layoutX="466.0" layoutY="268.0" prefHeight="210.0" prefWidth="76.0">
                                       <columns>
                                           <TableColumn fx:id="colC5" prefWidth="75.0" text="Cantidad" />
                                       </columns>
