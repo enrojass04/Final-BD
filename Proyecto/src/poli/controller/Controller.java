@@ -828,19 +828,12 @@ public class Controller implements Initializable{
 			int cantidad = Integer.parseInt(tfCantidad.getText());
 			Producto pro = Conexion.buscar_reg(nombreProducto);
 			Producto proc = new Producto(cantidad);
-			if (pro == null && proc == null ) {
-				Alert mensaje = new Alert(AlertType.INFORMATION);
-				mensaje.setTitle("Resultado");
-				mensaje.setHeaderText("Producto no listado");
-				mensaje.show();	
-
-			} else if (pro != null && proc != null){
+			if (pro != null && proc != null ) {
 				listaPF.add(pro);
 				mostrar(pro);
 				listaPFcantidad.add(proc);
-				tablaCantidad.setItems(listaPFcantidad);
-			}
-
+				tablaCantidad.setItems(listaPFcantidad);				
+			} 
 		
 			guardarlista ();
 			tfBuscar.setText(null);
